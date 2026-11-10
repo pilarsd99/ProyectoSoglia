@@ -1,5 +1,9 @@
+#Estas son lineas de codigo para linux
 import os
-os.environ.setdefault("QT_QPA_PLATFORM", "xcb")
+import platform
+if platform.system() == "Linux":
+    os.environ.setdefault("QT_QPA_PLATFORM", "xcb")
+#_______________________________________________________
 import cv2
 import mediapipe as mp
 import math
@@ -96,7 +100,8 @@ def reconocer_gesto(puntos_Mano):
  # Carga de imagenes
 # ============================================================
 def cargar_pares(max_w, max_h):
-    BASE = os.path.expanduser("~/proyecto_mediapipe/ProyectoSoglia/Imagenes/")
+
+    BASE = os.path.join(os.path.dirname(__file__), "Imagenes") + os.sep
     rutas = [
         [BASE + "img1A.png", BASE + "img1B.png"],
         [BASE + "img2A.png", BASE + "img2B.png"]
